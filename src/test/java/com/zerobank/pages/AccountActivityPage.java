@@ -34,6 +34,8 @@ public class AccountActivityPage extends BasePage {
     public WebElement descriptionInput;
     @FindBy(xpath = "//select[@id='aa_type']")
     public WebElement typeFindTranscationDropdown;
+    @FindBy (xpath = "//div//thead//tr//th")
+    public WebElement transactionsTbaleHeaders;
 
 
 

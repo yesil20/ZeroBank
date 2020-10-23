@@ -22,6 +22,9 @@ public class AccountSummaryPage extends BasePage {
     public WebElement loanLink;
     @FindBy(xpath = "//a[contains(text(),'Account Activity')]")
     public WebElement accountActivityTab;
+    @FindBy (xpath = "//a[@class='brand']")
+    public WebElement pageTitle;
+
 
 
 

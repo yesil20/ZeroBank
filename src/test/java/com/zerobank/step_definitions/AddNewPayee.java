@@ -5,6 +5,7 @@ import com.zerobank.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 import java.util.Map;
@@ -33,6 +34,7 @@ public class AddNewPayee {
     public void clicksAddNewPayeeTab() {
         new PayBillsPage().addNewPayeeTab.click();
     }
+
 
 
 }

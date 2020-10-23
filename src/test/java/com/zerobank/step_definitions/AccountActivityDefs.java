@@ -13,6 +13,9 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
+import javax.sql.rowset.BaseRowSet;
+import java.util.List;
+
 public class AccountActivityDefs {
 
     @Given("the user is logged in")
@@ -59,15 +62,41 @@ public class AccountActivityDefs {
     }
     @When("the user clicks on Loan link on the Account Summary page")
     public void the_user_clicks_on_Loan_link_on_the_Account_Summary_page() {
+        BrowserUtils.waitFor(1);
         new AccountSummaryPage().loanLink.click();
     }
     @Then("the Account Activity page should be displayed")
     public void the_Account_Activity_page_should_be_displayed() {
+        BrowserUtils.waitFor(1);
        Assert.assertTrue(Driver.get().findElement(By.xpath("//li[@class='active'][@id='account_activity_tab']")).isDisplayed());
     }
     @Then("Account drop down should have Loan selected")
     public void account_drop_down_should_have_Loan_selected() {
+        BrowserUtils.waitFor(1);
         Assert.assertEquals("Loan",new AccountActivityPage().verifyFirstSelection());
     }
 
+    @When("on the Account summary page Zerobank should be displayed as a title")
+    public void onTheAccountSummaryPageZerobankShouldBeDisplayedAsATitle() {
+        BrowserUtils.waitFor(1);
+        Assert.assertTrue(new AccountSummaryPage().pageTitle.isDisplayed());
+    }
+
+    @Then("Default option of Account dropdown should be Savings")
+    public void defaultOptionOfAccountDropdownShouldBeSavings() {
+        BrowserUtils.waitFor(2);
+        Assert.assertEquals("Savings",new Select(new AccountActivityPage().accountDropdown).getFirstSelectedOption().getText());
+    }
+
+    @Then("Dropdown sholud have following options")
+    public void dropdownSholudHaveFollowingOptions(List<String> accountdropdown) {
+        BrowserUtils.waitFor(1);
+        Assert.assertEquals(accountdropdown,BrowserUtils.getElementsText(new Select(new AccountActivityPage().accountDropdown).getOptions()));
+    }
+
+    @Then("Transcations table must have following options")
+    public void transcationsTableMustHaveFollowingOptions(List<String> TransactionTable) {
+        BrowserUtils.waitFor(1);
+        Assert.assertEquals(TransactionTable, BrowserUtils.getElementsText(Driver.get().findElements(By.xpath("//div//thead//tr//th"))));
+    }
 }

@@ -19,6 +19,10 @@ public class LoginPage {
     public WebElement password;
     @FindBy(xpath = "//input[@name='submit']")
     public WebElement loginBtn;
+    @FindBy (xpath = "//div[@class='alert alert-error']")
+    public WebElement errorMessage;
+
+
 
     public void login(String userNameStr, String passwordStr) {
         Driver.get().get(ConfigurationReader.get("url"));
