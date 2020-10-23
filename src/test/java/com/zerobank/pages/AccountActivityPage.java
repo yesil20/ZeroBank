@@ -30,6 +30,12 @@ public class AccountActivityPage extends BasePage {
     public WebElement findButton;
     @FindBy (xpath = "//div[@id='filtered_transactions_for_account']//tbody//tr//td[1]")
     public WebElement dateColumnOffilteredTable;// All of them
+    @FindBy (xpath = "//div[@class='board']//input[@id='aa_description']")
+    public WebElement descriptionInput;
+    @FindBy(xpath = "//select[@id='aa_type']")
+    public WebElement typeFindTranscationDropdown;
+
+
 
 
 
@@ -38,20 +44,20 @@ public class AccountActivityPage extends BasePage {
     public String verifyFirstSelection(){
         return new Select(accountDropdown).getFirstSelectedOption().getText();
     }
-    public void isWithinRange (int fromYYYY, int fromMM, int fromDD, int toYYYY, int toMM, int toDD) {
-
-        Date expectedFrom = new Date(fromYYYY-fromMM-fromDD);
-        Date expectedTo = new Date(toYYYY-toMM-toDD);
-
-        List<WebElement> dates = Driver.get().findElements(By.xpath("//div[@id='filtered_transactions_for_account']//tbody//tr//td[1]"));
-        List<String> dateString =BrowserUtils.getElementsText(dates);
-        for (String date: dateString) {
-            String[] dateArray = date.split("-");
-            Date actualDate = new Date(Integer.parseInt(dateArray[0])-Integer.parseInt(dateArray[1])-Integer.parseInt(dateArray[2]));
-            if (expectedTo.after(actualDate)||expectedFrom.before(actualDate)){
-                System.out.println("it is in range");
-            }
-        }
+//    public void isWithinRange (int fromYYYY, int fromMM, int fromDD, int toYYYY, int toMM, int toDD) {
+//
+//        Date expectedFrom = new Date(fromYYYY-fromMM-fromDD);
+//        Date expectedTo = new Date(toYYYY-toMM-toDD);
+//
+//        List<WebElement> dates = Driver.get().findElements(By.xpath("//div[@id='filtered_transactions_for_account']//tbody//tr//td[1]"));
+//        List<String> dateString =BrowserUtils.getElementsText(dates);
+//        for (String date: dateString) {
+//            String[] dateArray = date.split("-");
+//            Date actualDate = new Date(Integer.parseInt(dateArray[0])-Integer.parseInt(dateArray[1])-Integer.parseInt(dateArray[2]));
+//            if (expectedTo.after(actualDate)||expectedFrom.before(actualDate)){
+//                System.out.println("it is in range");
+//            }
+//        }
 
 //        String[] dateArrayFirst = BrowserUtils.getElementsText(dates).get(0).split("-");
 //        int fromDate = Integer.parseInt(dateArrayFirst[0]+dateArrayFirst[1]+dateArrayFirst[2]);
@@ -63,5 +69,5 @@ public class AccountActivityPage extends BasePage {
 //        int tYYYY = Integer.parseInt(dateArrayLast[0]);
 //        int tMM =Integer.parseInt(dateArrayLast[1]);
 //        int tDD =Integer.parseInt(dateArrayLast[2]);
-    }
+
 }
