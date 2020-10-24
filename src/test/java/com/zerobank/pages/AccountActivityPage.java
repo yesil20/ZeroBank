@@ -36,6 +36,8 @@ public class AccountActivityPage extends BasePage {
     public WebElement typeFindTranscationDropdown;
     @FindBy (xpath = "//div//thead//tr//th")
     public WebElement transactionsTbaleHeaders;
+    @FindBy(xpath = "//a[contains(text(),'Account Activity')]")
+    public WebElement accountActivityTab;
 
 
 

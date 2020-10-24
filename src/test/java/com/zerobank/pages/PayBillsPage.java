@@ -33,6 +33,16 @@ public class PayBillsPage extends BasePage{
     public WebElement amountOfCurrency;
     @FindBy(xpath = "//input[@id='pc_calculate_costs']")
     public WebElement calculateCosts;
+    @FindBy (xpath = "//span[contains(text(),'The payment was successfully submitted.')]")
+    public WebElement paymentSuccesfullMessage;
+    @FindBy(xpath = "//input[@id='sp_amount']")
+    public WebElement sp_Amount;
+    @FindBy(xpath = "//input[@id='sp_date']")
+    public WebElement sp_Date;
+    @FindBy(xpath = "//input[@id='pay_saved_payees']")
+    public WebElement sp_PayBtn;
+
+
 
 
 

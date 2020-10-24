@@ -9,12 +9,14 @@ import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.eo.Se;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import javax.sql.rowset.BaseRowSet;
-import java.util.List;
+import java.util.*;
 
 public class AccountActivityDefs {
 
@@ -91,12 +93,21 @@ public class AccountActivityDefs {
     @Then("Dropdown sholud have following options")
     public void dropdownSholudHaveFollowingOptions(List<String> accountdropdown) {
         BrowserUtils.waitFor(1);
-        Assert.assertEquals(accountdropdown,BrowserUtils.getElementsText(new Select(new AccountActivityPage().accountDropdown).getOptions()));
+        Select select =new Select(new AccountActivityPage().accountDropdown);
+        Set<String> set = new LinkedHashSet<>(BrowserUtils.getElementsText(select.getOptions()));
+        List<String>list =new ArrayList<>(set);
+        Assert.assertEquals(accountdropdown,list);
     }
 
     @Then("Transcations table must have following options")
     public void transcationsTableMustHaveFollowingOptions(List<String> TransactionTable) {
         BrowserUtils.waitFor(1);
         Assert.assertEquals(TransactionTable, BrowserUtils.getElementsText(Driver.get().findElements(By.xpath("//div//thead//tr//th"))));
+    }
+
+    @When("And clicks Account Activity Tab")
+    public void andClicksAccountActivityTab() {
+        BrowserUtils.waitFor(1);
+        new AccountActivityPage().accountActivityTab.click();
     }
 }

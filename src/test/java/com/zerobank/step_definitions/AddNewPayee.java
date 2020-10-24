@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class AddNewPayee {
     @Given("creates new payee using following information")
-    public void creates_new_payee_using_following_information(Map<String,String> addNewPayee) {
+    public void creates_new_payee_using_following_information(Map<String, String> addNewPayee) {
         BrowserUtils.waitFor(1);
         new PayBillsPage().payeeName.sendKeys(addNewPayee.get("Payee Name"));
         new PayBillsPage().payeeAddress.sendKeys(addNewPayee.get("Payee Address"));
@@ -20,6 +20,7 @@ public class AddNewPayee {
         new PayBillsPage().payeeDetails.sendKeys(addNewPayee.get("Payee details"));
         new PayBillsPage().addBtn.click();
     }
+
     @Then("message The new payee The Law Offices of Hyde, Price & Scharks was successfully created. should be displayed")
     public void message_The_new_payee_The_Law_Offices_of_Hyde_Price_Scharks_was_successfully_created_should_be_displayed() {
         Assert.assertTrue(new PayBillsPage().addPayeeMessage.isDisplayed());
@@ -34,7 +35,6 @@ public class AddNewPayee {
     public void clicksAddNewPayeeTab() {
         new PayBillsPage().addNewPayeeTab.click();
     }
-
 
 
 }

@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 
 public class BrowserUtils {
@@ -45,6 +46,13 @@ public class BrowserUtils {
      * @return list of string
      */
     public static List<String> getElementsText(List<WebElement> list) {
+        List<String> elemTexts = new ArrayList<>();
+        for (WebElement el : list) {
+            elemTexts.add(el.getText());
+        }
+        return elemTexts;
+    }
+    public static List<String> getElementsText(Set<WebElement> list) {
         List<String> elemTexts = new ArrayList<>();
         for (WebElement el : list) {
             elemTexts.add(el.getText());

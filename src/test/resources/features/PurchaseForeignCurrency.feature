@@ -18,7 +18,6 @@ Feature: Purchase Foreign Currency
       |Norway (krone) |
       |New Zealand (dollar) |
       |Singapore (dollar) |
-
   Scenario: Error message for not selecting currency
     Given the user accesses the Purchase foreign currency cash tab
     When user tries to calculate cost without selecting a currency
