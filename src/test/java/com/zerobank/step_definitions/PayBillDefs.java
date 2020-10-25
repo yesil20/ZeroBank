@@ -3,6 +3,7 @@ package com.zerobank.step_definitions;
 import com.zerobank.pages.LoginPage;
 import com.zerobank.pages.PayBillsPage;
 import com.zerobank.utilities.BrowserUtils;
+import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -39,7 +40,10 @@ public class PayBillDefs {
     public void userShouldReceivePleaseFillOutThisFieldMessage() {
         BrowserUtils.waitFor(1);
         String message = new PayBillsPage().sp_Amount.getAttribute("validationMessage");
-        Assert.assertEquals("Please fill out this field.",message);
+        boolean first = "Please fill out this field.".equals(message);
+        boolean second = "Please fill in this field.".equals(message);
+        boolean firstandsecond = first||second;
+        Assert.assertTrue(firstandsecond);
     }
 
     @And("Amount fields should not accept alphabetical and special characters")
