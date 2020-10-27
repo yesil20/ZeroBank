@@ -94,9 +94,8 @@ public class AccountActivityDefs {
     public void dropdownSholudHaveFollowingOptions(List<String> accountdropdown) {
         BrowserUtils.waitFor(1);
         Select select =new Select(new AccountActivityPage().accountDropdown);
-        Set<String> set = new LinkedHashSet<>(BrowserUtils.getElementsText(select.getOptions()));
-        List<String>list =new ArrayList<>(set);
-        Assert.assertEquals(accountdropdown,list);
+        List<String> actuallist = BrowserUtils.getElementsText(select.getOptions());
+        new AccountActivityPage().checkoptionsList(accountdropdown,actuallist);
     }
 
     @Then("Transcations table must have following options")
