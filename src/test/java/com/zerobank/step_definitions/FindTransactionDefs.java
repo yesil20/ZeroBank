@@ -28,7 +28,7 @@ public class FindTransactionDefs<toMM> {
     }
     @And("clicks search")
     public void clicksSearch() {
-        BrowserUtils.waitForClickablility(new AccountActivityPage().findButton,5);
+        BrowserUtils.waitForClickablility(new AccountActivityPage().findButton,10);
         new AccountActivityPage().findButton.click();
     }
     @When("the user enters description “ONLINE”")
@@ -38,7 +38,7 @@ public class FindTransactionDefs<toMM> {
     }
     @Then("results table should only show descriptions containing “ONLINE”")
     public void resultsTableShouldOnlyShowDescriptionsContainingONLINE() {
-        BrowserUtils.waitFor(1);
+        BrowserUtils.waitForClickablility(Driver.get().findElement(By.xpath("//div[@id='filtered_transactions_for_account']//tbody//tr//td[2]")),5);
         List<WebElement> results = Driver.get().findElements(By.xpath("//div[@id='filtered_transactions_for_account']//tbody//tr//td[2]"));
         for (WebElement result: results) {
             Assert.assertTrue(result.getText().contains("ONLINE"));
