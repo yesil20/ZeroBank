@@ -38,7 +38,7 @@ public class FindTransactionDefs<toMM> {
     }
     @Then("results table should only show descriptions containing “ONLINE”")
     public void resultsTableShouldOnlyShowDescriptionsContainingONLINE() {
-        BrowserUtils.waitForClickablility(Driver.get().findElement(By.xpath("//div[@id='filtered_transactions_for_account']//tbody//tr//td[2]")),5);
+        BrowserUtils.waitForClickablility(new AccountActivityPage().descriptionInput,5);
         List<WebElement> results = Driver.get().findElements(By.xpath("//div[@id='filtered_transactions_for_account']//tbody//tr//td[2]"));
         for (WebElement result: results) {
             Assert.assertTrue(result.getText().contains("ONLINE"));
