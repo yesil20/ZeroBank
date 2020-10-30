@@ -28,12 +28,12 @@ public class FindTransactionDefs<toMM> {
     }
     @And("clicks search")
     public void clicksSearch() {
-        BrowserUtils.waitFor(1);
+        BrowserUtils.waitForClickablility(new AccountActivityPage().findButton,5);
         new AccountActivityPage().findButton.click();
     }
     @When("the user enters description “ONLINE”")
     public void theUserEntersDescriptionONLINE() {
-        BrowserUtils.waitFor(1);
+        BrowserUtils.waitForClickablility(new AccountActivityPage().descriptionInput,5);
         new AccountActivityPage().descriptionInput.sendKeys("ONLINE");
     }
     @Then("results table should only show descriptions containing “ONLINE”")
